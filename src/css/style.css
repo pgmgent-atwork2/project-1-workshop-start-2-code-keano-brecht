@@ -148,8 +148,6 @@ img {
     border: 1px solid black;
     margin: 0 auto;
     overflow: hidden;
-
-
 }
 
 .block {
@@ -182,11 +180,34 @@ img {
     animation: block 2s infinite linear;
 }
 
+.hole::before {
+    content: "";
+    width: 75px;
+    height: 250px;
+    background-image: url("../img/pipe1.png");
+    background-size: cover;
+    position: absolute;
+    bottom: -15.5rem;
+    left: -.75rem;
+}
+
+.hole::after {
+    content: "";
+    width: 75px;
+    height: 250px;
+    background-image: url("../img/pipe2.png");
+    background-size: cover;
+    position: absolute;
+    top: -15.5rem;
+    left: -.75rem;
+
+}
+
 .character {
     width: 20px;
     height: 20px;
     background-color: red;
-    background-image: url(../img/avatar.png);
+    background-image: url("../img/avatar.png");
     position: absolute;
     top: 100px;
     border-radius: 50%;
