@@ -137,12 +137,19 @@ img {
 
 
 /* CSS for the game */
+#game-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .game {
     width: 400px;
     height: 500px;
     border: 1px solid black;
-    margin: auto;
+    margin: 0 auto;
     overflow: hidden;
+
+
 }
 
 .block {
@@ -179,6 +186,7 @@ img {
     width: 20px;
     height: 20px;
     background-color: red;
+    background-image: url(../img/avatar.png);
     position: absolute;
     top: 100px;
     border-radius: 50%;
