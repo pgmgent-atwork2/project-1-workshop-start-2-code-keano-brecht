@@ -1,0 +1,184 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    font-family: 'roboto', sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* CSS for the tutorial page */
+/* Algemene body-stijl */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    /* Neutrale achtergrondkleur */
+}
+
+/* Sidebar-stijlen */
+.sidebar {
+    position: fixed;
+    /* Zodat het aan de rechterkant blijft */
+    top: 0;
+    right: 0;
+    /* Sidebar aan de rechterkant van de pagina */
+    width: 150px;
+    /* Vaste breedte voor de sidebar */
+    height: 100vh;
+    /* Sidebar beslaat de volledige hoogte van het venster */
+    background-color: #333;
+    /* Donkere kleur voor contrast */
+    color: #fff;
+    /* Witte tekst voor leesbaarheid */
+    display: flex;
+    flex-direction: column;
+    /* Zodat links onder elkaar staan */
+    padding: 10px;
+    /* Kleine padding voor ademruimte */
+}
+
+/* Links in de sidebar */
+.sidebar a {
+    color: #fff;
+    /* Zorgt voor witte tekst voor alle links */
+    text-decoration: none;
+    /* Geen onderstreping van de links */
+    margin: 10px 0;
+    /* Ruimte tussen links */
+    padding: 10px;
+    /* Binnenmarge voor klikbare ruimte */
+    border-radius: 5px;
+    /* Afgeronde hoeken voor een zachter uiterlijk */
+    transition: background-color 0.3s;
+    /* Soepele overgang bij hover */
+}
+
+/* Hover-effect voor links in de sidebar */
+.sidebar a:hover {
+    background-color: #444;
+    /* Iets lichtere kleur bij hover */
+}
+
+/* Sectie voor tutorial-content */
+.tutorial {
+    margin-right: 160px;
+    /* Voorkom overlapping met de sidebar */
+    padding: 20px;
+    /* Ruimte rond de content */
+    background-color: #fff;
+    /* Witte achtergrond voor de tutorial-sectie */
+    border-radius: 5px;
+    /* Afgeronde hoeken voor esthetiek */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    /* Licht schaduweffect voor diepte */
+}
+
+/* Stijlen voor details/summary-elementen */
+details {
+    margin-top: 10px;
+    /* Ruimte boven details-secties */
+}
+
+/* Header stijl */
+h1 {
+    color: #333;
+    /* Donkere kleur voor tekst */
+}
+
+/* Stijl voor pre en code elementen */
+pre {
+    background-color: #f5f5f5;
+    /* Lichtgrijze achtergrond voor code-blokken */
+    padding: 10px;
+    /* Ruimte binnen pre-elementen */
+    border: 1px solid #ddd;
+    /* Lichtgrijze rand */
+    border-radius: 5px;
+    /* Afgeronde hoeken voor esthetiek */
+    overflow-x: auto;
+    /* Scrollen in horizontale richting als nodig */
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    /* Monospace-lettertype voor code */
+    color: #333;
+    /* Donkere kleur voor code */
+}
+
+/* Image styles */
+img {
+    max-width: 100%;
+    /* Behoud de proporties van de afbeeldingen */
+    height: auto;
+    /* Pas de hoogte aan voor schaalbaarheid */
+    border-radius: 5px;
+    /* Afgeronde hoeken voor een meer vloeiend uiterlijk */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CSS for the game */
+.game {
+    width: 400px;
+    height: 500px;
+    border: 1px solid black;
+    margin: auto;
+    overflow: hidden;
+}
+
+.block {
+    width: 50px;
+    height: 500px;
+    background-color: black;
+    position: relative;
+    left: 400px;
+    animation: block 2s infinite linear;
+}
+
+@keyframes block {
+    0% {
+        left: 400px
+    }
+
+    100% {
+        left: -50px
+    }
+}
+
+.hole {
+    width: 50px;
+    height: 150px;
+    background-color: white;
+    position: relative;
+    left: 400px;
+    top: -500px;
+    animation: block 2s infinite linear;
+}
+
+.character {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    position: absolute;
+    top: 100px;
+    border-radius: 50%;
+}

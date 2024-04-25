@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./prism/prism.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Tutorial</title>
+</head>
+
+<body class="tutorial-page">
+    <aside class="sidebar">
+        <a href="game.html">Flappy Bird</a>
+        <a href="tutorial.html">Tutorial</a>
+    </aside>
+    <section class="tutorial">
+        <h1>Hoe maak je een Flappy Bird game</h1>
+        <p>Flappy Bird is een simpel spel waarbij je een vogel bestuurt die door een reeks obstakels moet vliegen. In
+            deze tutorial leer je hoe je dit spel maakt met HTML, CSS en JavaScript.</p>
+
+        <details>
+            <summary>stap 1: mappenstructuur</summary>
+            <p>Voor het maken van deze game hebben we maar drie bestanden nodig, dit zijnde een HTML, JS en CSS bestand.
+                Elk van deze bestanden heeft zijn eigen functie binnen dit spel. Om het overzichtelijk te houden zullen
+                we wel verschillende mappen gebruiken om code gescheiden te houden van elkaar</p>
+            <img src="img/mappenstructuur.png" alt="mappenstructuur">
+        </details>
+
+        <details>
+            <summary>stap 2: het HTML-bestand</summary>
+            <p>De HTML is het skelet van de website en bevat de structuur van de game. In dit bestand maken we de game
+                elementen aan zoals de vogel, de obstakels en de score. </p>
+            <pre><code class="language-html">
+                &lt;&excl;DOCTYPE html&gt;
+&NewLine;&lt;html lang&equals;&quot;en&quot; onclick&equals;&quot;jump&lpar;&rpar;&quot;&gt;
+&NewLine;
+&NewLine;&lt;head&gt;
+&NewLine;    &lt;meta charset&equals;&quot;UTF-8&quot;&gt;
+&NewLine;    &lt;title&gt;Flappy Bird&lt;&sol;title&gt;
+&NewLine;    &lt;link rel&equals;&quot;stylesheet&quot; href&equals;&quot;style&period;css&quot;&gt;
+&NewLine;&lt;&sol;head&gt;
+&NewLine;
+&NewLine;&lt;body&gt;
+&NewLine;    &lt;aside class&equals;&quot;sidebar&quot;&gt;
+&NewLine;        &lt;a href&equals;&quot;game&period;hAtml&quot;&gt;Flappy Bird&lt;&sol;a&gt;
+&NewLine;        &lt;a href&equals;&quot;tutorial&period;html&quot;&gt;Tutorial&lt;&sol;a&gt;
+&NewLine;    &lt;&sol;aside&gt;
+&NewLine;    &lt;div id&equals;&quot;game&quot; class&equals;&quot;game&quot;&gt;
+&NewLine;        &lt;div id&equals;&quot;block&quot; class&equals;&apos;block&apos;&gt;&lt;&sol;div&gt;
+&NewLine;        &lt;div id&equals;&quot;hole&quot; class&equals;&apos;hole&apos;&gt;&lt;&sol;div&gt;
+&NewLine;        &lt;div id&equals;&quot;character&quot; class&equals;&quot;character&quot;&gt;&lt;&sol;div&gt;
+&NewLine;    &lt;&sol;div&gt;
+&NewLine;&lt;&sol;body&gt;
+&NewLine;&lt;script src&equals;&quot;script&period;js&quot;&gt;&lt;&sol;script&gt;
+&NewLine;
+&NewLine;&lt;&sol;html&gt;
+                </code>
+            </pre>
+        </details>
+
+        <details>
+            <summary>stap 3: het JavaScript-bestand</summary>
+            <p>
+                Met JavaScript voegen we functionaliteit toe aan de game. In dit bestand schrijven we de code die de
+                vogel
+                laat springen, de obstakels laat bewegen en de score bijhoudt.
+            </p>
+            <p>
+                Als eerst zullen we enkele constanten moeten aanmaken die we nodig hebben voor het spel werkend te
+                maken.
+                Deze constanten zijn de vogel, de blokken en de gaten.
+            </p>
+            <pre>
+                <code class="language-javascript">
+                    const character = document.getElementById('character');
+                    const block = document.getElementById('block');
+                    const hole = document.getElementById('hole');
+                </code>
+            </pre>
+            <p>
+                Nadat we deze hebben opgehaald hebben we nog twee constanten nodig die zullen dienen als tellers voor de
+                score en de hoogte van de vogel.
+            </p>
+            <pre>
+                <code class="language-javascript">
+                    let counter = 0;
+                    let jumping = 0;
+                </code>
+            </pre>
+
+            <p>
+                als eerst zullen we een functie schrijven waarin we de opening tussen de buizen een willekeurige hoogte
+                geven.
+            </p>
+            <pre>
+                <code class="language-javascript">
+                    hole.addEventListener('animationiteration', () => {
+                        let random = -((Math.random() * 300) + 150);
+                        hole.style.top = random + 'px';
+                        counter++;
+                    });
+                </code>
+            </pre>
+            <p>
+                hierna zulllen we een functie schrijven die enkele waarden zal ophalen die nodig zijn. Hiervoor
+                gebruiken we een timer die elke 10 milliseconden zal worden uitgevoerd.
+                Hiermee halen we om de 10 milliseconden de hoogte van de vogel op en de positie van de blokken.
+            </p>
+            <pre>
+                <code class="language-javascript">
+                    setInterval(() => {
+                        const characterTop = parseInt(
+                          window.getComputedStyle(character).getPropertyValue("top")
+                        );
+                        if (jumping === 0) {
+                          character.style.top = characterTop + 3 + "px";
+                        }
+                        const blockLeft = parseInt(
+                          window.getComputedStyle(block).getPropertyValue("left")
+                        );
+                        const holeTop = parseInt(
+                          window.getComputedStyle(hole).getPropertyValue("top")
+                        );
+                        const cTop = -(500 - characterTop);
+                        if (
+                          characterTop > 480 ||
+                          (blockLeft < 20 &&
+                            blockLeft > -50 &&
+                            (cTop < holeTop || cTop > holeTop + 130))
+                        ) {
+                          alert(`Game over. Score: ${counter - 1}`);
+                          character.style.top = 100 + "px";
+                          counter = 0;
+                        }
+                      }, 10);
+                </code>
+            </pre>
+
+            <p>
+                als laatste zullen we een functie schrijven die de vogel laat springen. Deze functie zal worden
+                aangeroepen wanneer er op het scherm wordt geklikt.
+            </p>
+            <pre>
+                <code class="language-javascript">a
+                    const jump = () => {
+                        jumping = 1;
+                        let jumpCount = 0;
+                        const jumpInterval = setInterval(() => {
+                          const characterTop = parseInt(
+                            window.getComputedStyle(character).getPropertyValue("top")
+                          );
+                          if (characterTop > 6 && jumpCount < 15) {
+                            character.style.top = characterTop - 5 + "px";
+                          }
+                          if (jumpCount > 20) {
+                            clearInterval(jumpInterval);
+                            jumping = 0;
+                            jumpCount = 0;
+                          }
+                          jumpCount++;
+                        }, 10);
+                      };
+                </code>
+            </pre>
+        </details>
+    </section>
+
+
+
+
+    <script src="./prism/prism.js"></script>
+</body>
+
+</html>
