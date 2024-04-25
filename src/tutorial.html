@@ -164,6 +164,62 @@
                 </code>
             </pre>
         </details>
+        <details>
+            <summary>Stap 4: styling</summary>
+            <p>
+                Met CSS geven we de game vorm en kleur. In dit bestand schrijven we de code die de vogel, de obstakels
+                en
+                de score opmaakt.
+            <pre>
+                <code class="language-css">
+                    .game {
+                        width: 400px;
+                        height: 500px;
+                        border: 1px solid black;
+                        margin: auto;
+                        overflow: hidden;
+                    }
+                    
+                    .block {
+                        width: 50px;
+                        height: 500px;
+                        background-color: black;
+                        position: relative;
+                        left: 400px;
+                        animation: block 2s infinite linear;
+                    }
+                    
+                    @keyframes block {
+                        0% {
+                            left: 400px
+                        }
+                    
+                        100% {
+                            left: -50px
+                        }
+                    }
+                    
+                    .hole {
+                        width: 50px;
+                        height: 150px;
+                        background-color: white;
+                        position: relative;
+                        left: 400px;
+                        top: -500px;
+                        animation: block 2s infinite linear;
+                    }
+                    
+                    .character {
+                        width: 20px;
+                        height: 20px;
+                        background-color: red;
+                        position: absolute;
+                        top: 100px;
+                        border-radius: 50%;
+                    }
+                </code>
+            </pre>
+        </details>
     </section>
 
 
